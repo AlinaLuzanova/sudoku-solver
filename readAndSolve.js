@@ -1,5 +1,6 @@
 // Подключить функции из файла sudoku.js.
 import { showSudoku, isSolved, prettyBoard } from './sudoku';
+import { solveSudoku } from './solved';
 
 const input = document.querySelector('input');
 const btnShow = document.querySelector('.buttonShow');
@@ -25,31 +26,30 @@ function readAndSolve(error, fileData) {
 
   // Получить желаемый судоку по индексу и вывести его в консоль.
   const puzzle = puzzles[puzzleNumber - 1];
-  btnShow.addEventListener('click',()=>{
-    //const solvedPuzzle = sudoku.showSudoku(puzzle);
-    showSudoku(puzzle)
+  btnShow.addEventListener('click', () => {
+    showSudoku(puzzle);
   })
 
-  console.log(`Решаем судоку №${puzzleNumber}:`);
-  console.log(puzzle, "\n");
 
-  //const
+
+
   // Использовать функцию solve из файла sudoku.js для решения судоку.
-  //const solvedPuzzle = sudoku.solve(puzzle);
+  btnSolve.addEventListener('click',()=>{
+    solveSudoku(showSudoku(puzzle));
+    if (isSolved(solveSudoku(showSudoku(puzzle)))) {
+      alert(`Не смогли решить судоку №${puzzleNumber} :(, '\n')`);
+      return; // Если судоку не решён, завершить работу этой функции.
+    }
+    console.log(`Судоку №${puzzleNumber} решён успешно!`);
+  })
+
 
 
   // Использовать функцию isSolved из файла sudoku.js для проверки решения судоку.
-  if (isSolved(solvedPuzzle)) {
-    console.log(`Не смогли решить судоку №${puzzleNumber} :(`, '\n');
-    return; // Если судоку не решён, завершить работу этой функции.
-  }
-
-  // Код ниже сработает, только если проверка решения судоку прошла успешно.
-  console.log(`Судоку №${puzzleNumber} решён успешно!`);
 
   // Использовать функцию prettyBoard из файла sudoku.js для форматирования
   // игрового поля в строку в желаемом формате.
-  console.log(prettyBoard(solvedPuzzle), '\n');
+
 }
 
 export default readAndSolve;
