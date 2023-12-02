@@ -24,7 +24,7 @@ function solve(boardString) {
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
 function isSolved(board) {
-
+  return board.indexOf(' ') > -1;
 }
 
 /**
@@ -32,9 +32,7 @@ function isSolved(board) {
  * Возвращает строку с игровым полем для последующего вывода в консоль.
  * Подумай, как симпатичнее сформировать эту строку.
  */
-function prettyBoard(board) {
-
-}
+function prettyBoard(board) {}
 
 // Экспортировать функции для использования в другом файле (например, readAndSolve.js).
 module.exports = {
