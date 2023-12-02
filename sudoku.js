@@ -5,10 +5,10 @@
  */
 export function showSudoku(boardString) {
   const filledSudokuArr = [];
-  const rows = document.querySelectorAll('.row');
-  const sudokuString = boardString.split('');
+  const rows = document.querySelectorAll(".row");
+  const sudokuString = boardString.split("");
   for (let i = 0; i < 9; i++) {
-    const rowChildren = rows[i].querySelectorAll('.item');
+    const rowChildren = rows[i].querySelectorAll(".item");
     const rowArr = [];
     filledSudokuArr.push(rowArr);
     for (let j = 0; j < 9; j++) {
@@ -28,9 +28,9 @@ export function showSudoku(boardString) {
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
-export function isSolved(board) {
-  return board.indexOf(' ') > -1;
-}
+// export function isSolved(board) {
+//   return board.indexOf(" ") > -1;
+// }
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.

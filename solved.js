@@ -1,15 +1,15 @@
 //const showSudoku = require("./sudoku");
-import { showSudoku } from './sudoku.js';
+import { showSudoku } from "./sudoku.js";
 // eslint-disable-next-line import/prefer-default-export
 export function solveSudoku(board) {
   function innerFunc() {
     const size = 9;
     const boxSize = 3;
 
-    const findEmpty = board => {
+    const findEmpty = (board) => {
       for (let r = 0; r < size; r++) {
         for (let c = 0; c < size; c++) {
-          if (board[r][c] === '-') {
+          if (board[r][c] === "-") {
             return [r, c];
           }
         }
@@ -59,7 +59,7 @@ export function solveSudoku(board) {
       for (let i = 1; i < size + 1; i++) {
         const currNum = i.toString();
         const isValid = validate(currNum, currPos, board);
-        //console.log('currPos ', currPos, 'currNum ',currNum, 'isValid ',isValid);
+
         if (isValid) {
           const [x, y] = currPos;
           board[x][y] = currNum;
@@ -68,7 +68,7 @@ export function solveSudoku(board) {
             return true;
           }
 
-          board[x][y] = '.';
+          board[x][y] = "-";
         }
       }
 
@@ -79,10 +79,10 @@ export function solveSudoku(board) {
     return board;
   }
   function loadToDOM() {
-    const rows = document.querySelectorAll('.row');
-    const sudokuString = String(innerFunc()).split('');
+    const rows = document.querySelectorAll(".row");
+    const sudokuString = innerFunc().flat();
     for (let i = 0; i < 9; i++) {
-      const rowChildren = rows[i].querySelectorAll('.item');
+      const rowChildren = rows[i].querySelectorAll(".item");
       for (let j = 0; j < 9; j++) {
         const index = i * 9 + j; // вычисляем индекс в sudokuString
         if (index < sudokuString.length) {
@@ -91,5 +91,6 @@ export function solveSudoku(board) {
       }
     }
   }
-  return loadToDOM();
+  loadToDOM();
+  return board;
 }
