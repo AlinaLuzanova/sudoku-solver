@@ -22,6 +22,7 @@ export function showSudoku(boardString) {
 
 
   return filledSudokuArr; //массив заполненный строчкой из puzzle.txt
+  console.log(filledSudokuArr);
 }
 
 /**
@@ -29,7 +30,7 @@ export function showSudoku(boardString) {
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
 export function isSolved(board) {
-
+  return board.indexOf(' ') > -1;
 }
 
 /**
@@ -42,4 +43,3 @@ export function prettyBoard(board) {
 }
 
 // Экспортировать функции для использования в другом файле (например, readAndSolve.js).
-
