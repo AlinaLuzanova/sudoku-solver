@@ -1,118 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="runner.js" type="module" defer></script>
-</head>
-<body>
-<div class="sudoku">
-	<div class="inpContainer">
-		<input type="text" placeholder="Введите номер судоку" style="margin-bottom: 30px">
-		<button style="margin-top: 30px" class="btnShow">Показать судоку</button>
-	</div>
+    <link rel="stylesheet" href="style.css" />
+    <script src="runner.js" type="module" defer></script>
+  </head>
+  <body>
+    <div class="sudoku">
+      <div class="inpContainer">
+        <input type="file" name="inputfile" id="inputfile" /> <br />
+        <input type="text" placeholder="Введите номер судоку" style="margin-bottom: 30px" />
+        <button style="margin-top: 30px" class="btnShow">Показать судоку</button>
+        <pre id="output" style="display: none"></pre>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <div class="row">
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+        <div class="item"></div>
+      </div>
+      <button style="margin-top: 30px" class="btnSolve">Решить судоку</button>
+    </div>
+  </body>
+  <script type="text/javascript">
+    document.getElementById('inputfile').addEventListener('change', function () {
+      let fr = new FileReader();
+      fr.onload = function () {
+        document.getElementById('output').textContent = fr.result;
+      };
 
-    <div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<div class="row">
-		<div class="item">1</div>
-		<div class="item">2</div>
-		<div class="item">3</div>
-		<div class="item">4</div>
-		<div class="item">5</div>
-		<div class="item">6</div>
-		<div class="item">7</div>
-		<div class="item">8</div>
-		<div class="item">9</div>
-	</div>
-	<div class="row">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-	</div>
-	<button style="margin-top: 30px" class="btnSolve">Решить судоку</button>
-</div>
-</body>
+      fr.readAsText(this.files[0]);
+    });
+  </script>
 </html>

@@ -1,12 +1,19 @@
 // Подключить модуль работы с файловой системой.
 // Подключить функцию readAndSolve из соответствующего файла.
-import fs from './fs'
+//import fs from './fs'
 import readAndSolve from './readAndSolve.js';
 
 // Все судоку для решения доступны в файле puzzles.txt.
 // Прочесть файл puzzles.txt в кодировке 'utf-8' и передать его содержимое в функцию readAndSolve.
-fs.readFile(
-  './puzzles.txt',
-  'utf-8',
-  readAndSolve,
-);
+// fs.readFile(
+//   './puzzles.txt',
+//   'utf-8',
+//   readAndSolve,
+// );
+
+document.getElementById('inputfile').addEventListener('change', function () {
+  let fr = new FileReader();
+  fr.onload = function () {
+    document.getElementById('output').textContent = fr.result;
+  };
+});
