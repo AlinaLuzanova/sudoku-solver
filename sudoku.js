@@ -3,9 +3,9 @@
  * Возвращает игровое поле после попытки его решить.
  * Договорись со своей командой, в каком формате возвращать этот результат.
  */
-function solve(boardString) {
+function showSudoku(boardString) {
   const filledSudokuArr = [];
-  const sudokuString = boardString.split('');
+  const sudokuString = boardString.split("");
   for (let i = 0; i < 9; i++) {
     const rowArr = [];
     filledSudokuArr.push(rowArr);
@@ -17,28 +17,25 @@ function solve(boardString) {
     }
   }
   return filledSudokuArr; //массив заполненный строчкой из puzzle.txt
+  console.log(filledSudokuArr);
 }
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
-function isSolved(board) {
-
-}
+function isSolved(board) {}
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает строку с игровым полем для последующего вывода в консоль.
  * Подумай, как симпатичнее сформировать эту строку.
  */
-function prettyBoard(board) {
-
-}
+function prettyBoard(board) {}
 
 // Экспортировать функции для использования в другом файле (например, readAndSolve.js).
 module.exports = {
-  solve,
+  showSudoku,
   isSolved,
   prettyBoard,
 };
