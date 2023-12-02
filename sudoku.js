@@ -4,6 +4,19 @@
  * Договорись со своей командой, в каком формате возвращать этот результат.
  */
 function solve(boardString) {
+  const filledSudokuArr = [];
+  const sudokuString = boardString.split('');
+  for (let i = 0; i < 9; i++) {
+    const rowArr = [];
+    filledSudokuArr.push(rowArr);
+    for (let j = 0; j < 9; j++) {
+      const index = i * 9 + j; // вычисляем индекс в sudokuString
+      if (index < sudokuString.length) {
+        rowArr.push(sudokuString[index]);
+      }
+    }
+  }
+  return filledSudokuArr; //массив заполненный строчкой из puzzle.txt
 }
 
 /**
