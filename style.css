@@ -1,0 +1,25 @@
+body{
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+}
+.sudoku{
+	width: 504px;
+	height: 504px;
+	display: flex;
+	flex-direction: column;
+	
+}
+.row{
+	display: flex;
+	
+}
+.item{
+width: 56px;
+height: 56px;
+border: black solid 1px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+}
