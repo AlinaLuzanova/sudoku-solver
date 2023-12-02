@@ -131,5 +131,3 @@ dist
 
 
 .prettierrc
-.eslintrc.js
-package-lock.json
