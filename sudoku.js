@@ -24,7 +24,13 @@ function showSudoku(boardString) {
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
  * Возвращает булевое значение — решено это игровое поле или нет.
  */
+<<<<<<< HEAD
 function isSolved(board) {}
+=======
+function isSolved(board) {
+  return board.indexOf(' ') > -1;
+}
+>>>>>>> main
 
 /**
  * Принимает игровое поле в том формате, в котором его вернули из функции solve.
