@@ -20,7 +20,6 @@ export function showSudoku(boardString) {
     }
   }
 
-
   return filledSudokuArr; //массив заполненный строчкой из puzzle.txt
   console.log(filledSudokuArr);
 }
@@ -38,8 +37,6 @@ export function isSolved(board) {
  * Возвращает строку с игровым полем для последующего вывода в консоль.
  * Подумай, как симпатичнее сформировать эту строку.
  */
-export function prettyBoard(board) {
-
-}
+export function prettyBoard(board) {}
 
 // Экспортировать функции для использования в другом файле (например, readAndSolve.js).

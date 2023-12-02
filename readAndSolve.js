@@ -1,23 +1,19 @@
 // Подключить функции из файла sudoku.js.
-import { showSudoku, isSolved, prettyBoard } from './sudoku';
-import { solveSudoku } from './solved';
+import { showSudoku, isSolved, prettyBoard } from './sudoku.js';
+import { solveSudoku } from './solved.js';
 
-const input = document.querySelector('input');
-const btnShow = document.querySelector('.buttonShow');
-const btnSolve = document.querySelector('.buttonSolve');
+const input = document.querySelector('.input');
+const btnShow = document.querySelector('.btnShow');
+const btnSolve = document.querySelector('.btnSolve');
 
-function readAndSolve(error, fileData) {
-  // Если чтение файла не удалось, выбросить ошибку с описанием проблемы и
-  // завершить работу функции.
-  if (error) {
-    throw error;
-  }
-
+function readAndSolve() {
   // Разбить содержимое файла построчно и отфильтровать все пустые строки.
-  const puzzles = fileData.split("\n").filter((line) => line !== "");
+  const puzzles = document.getElementById('output').innerText;
+  const rows = puzzles.split('\r\n').filter(line => line !== '');
 
   // Получить номер судоку из process.argv, либо взять 1-й судоку по умолчанию.
   let puzzleNumber = input.value;
+  input.value = '';
 
   // Ограничить номер судоку максимальным числом массива с паззлами.
   if (puzzleNumber > puzzles.length) {
@@ -25,31 +21,26 @@ function readAndSolve(error, fileData) {
   }
 
   // Получить желаемый судоку по индексу и вывести его в консоль.
-  const puzzle = puzzles[puzzleNumber - 1];
-  btnShow.addEventListener('click', () => {
-    showSudoku(puzzle);
-  })
+  const puzzle = rows[puzzleNumber - 1];
 
-
-
+  showSudoku(puzzle);
 
   // Использовать функцию solve из файла sudoku.js для решения судоку.
-  btnSolve.addEventListener('click',()=>{
+  btnSolve.addEventListener('click', () => {
     solveSudoku(showSudoku(puzzle));
     if (isSolved(solveSudoku(showSudoku(puzzle)))) {
       alert(`Не смогли решить судоку №${puzzleNumber} :(, '\n')`);
       return; // Если судоку не решён, завершить работу этой функции.
     }
     console.log(`Судоку №${puzzleNumber} решён успешно!`);
-  })
-
-
+  });
 
   // Использовать функцию isSolved из файла sudoku.js для проверки решения судоку.
 
   // Использовать функцию prettyBoard из файла sudoku.js для форматирования
   // игрового поля в строку в желаемом формате.
-
 }
+
+btnShow.addEventListener('click', readAndSolve);
 
 export default readAndSolve;
