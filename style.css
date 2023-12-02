@@ -8,7 +8,7 @@ body{
 	height: 504px;
 	display: flex;
 	flex-direction: column;
-	
+	margin-top: 20px;
 }
 .row{
 	display: flex;
@@ -32,10 +32,10 @@ font-size: 30px;
 	border-right: 1px solid black;
 }
 
-.row:first-child {
+.row:nth-child(2) {
 	border-top: 3px solid black;
 }
 
-.row:nth-child(3n+3) {
+.row:nth-child(3n+4) {
 	border-bottom: 3px solid black;
 }
