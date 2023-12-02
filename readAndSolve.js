@@ -1,5 +1,5 @@
 // Подключить функции из файла sudoku.js.
-import { showSudoku, prettyBoard } from './sudoku.js';
+import { showSudoku } from './sudoku.js';
 import { solveSudoku } from './solved.js';
 
 document.getElementById('inputfile').addEventListener('change', function () {
@@ -28,25 +28,14 @@ function readAndSolve() {
     puzzleNumber = rows.length;
   }
 
-  // Получить желаемый судоку по индексу и вывести его в консоль.
+  // Получить желаемый судоку по индексу
   const puzzle = rows[puzzleNumber - 1];
 
   showSudoku(puzzle);
 
-  // Использовать функцию solve из файла sudoku.js для решения судоку.
   btnSolve.addEventListener('click', () => {
     solveSudoku(showSudoku(puzzle));
-    if (solveSudoku(showSudoku(puzzle))) {
-      // alert(`Не смогли решить судоку №${puzzleNumber} :(, '\n')`);
-      return; // Если судоку не решён, завершить работу этой функции.
-    }
-    console.log(`Судоку №${puzzleNumber} решён успешно!`);
   });
-
-  // Использовать функцию isSolved из файла sudoku.js для проверки решения судоку.
-
-  // Использовать функцию prettyBoard из файла sudoku.js для форматирования
-  // игрового поля в строку в желаемом формате.
 }
 
 btnShow.addEventListener('click', readAndSolve);
