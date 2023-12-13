@@ -1,49 +1,42 @@
-//const showSudoku = require("./sudoku");
-import { showSudoku } from "./sudoku.js";
 // eslint-disable-next-line import/prefer-default-export
 export function solveSudoku(board) {
   function innerFunc() {
     const size = 9;
     const boxSize = 3;
 
-    const findEmpty = (board) => {
+    const findEmpty = board => {
       for (let r = 0; r < size; r++) {
         for (let c = 0; c < size; c++) {
-          if (board[r][c] === "-") {
+          if (board[r][c] === '-') {
             return [r, c];
           }
         }
       }
+      // const index = board.findIndex((elem => elem.findIndex((item => item === '-')) > -1))
+      //   console.log(index);
       return null;
     };
 
     const validate = (num, pos, board) => {
       const [r, c] = pos;
 
-      //Check rows
-      for (let i = 0; i < size; i++) {
-        if (board[i][c] === num && i !== r) {
-          return false;
-        }
+      const rowsArr = board.map(el => el[c]);
+      if (rowsArr.some((el, idx) => el === num && idx !== r)) {
+        return false;
       }
 
-      //Check cols
-      for (let i = 0; i < size; i++) {
-        if (board[r][i] === num && i !== c) {
-          return false;
-        }
+      if (board[r].some((el, idx) => el === num && idx !== c)) {
+        return false;
       }
 
       //Check box
       const boxRow = Math.floor(r / boxSize) * boxSize;
       const boxCol = Math.floor(c / boxSize) * boxSize;
 
-      for (let i = boxRow; i < boxRow + boxSize; i++) {
-        for (let j = boxCol; j < boxCol + boxSize; j++) {
-          if (board[i][j] === num && i !== r && j !== c) {
-            return false;
-          }
-        }
+      const res = board.some((el, idx) => el.some((item, index) => item === num && index !== c && idx !== r && index >= boxCol && index < boxCol + boxSize) && idx >= boxRow && idx < boxRow + 3);
+      console.log(r, c, num);
+      if (res) {
+        return false;
       }
 
       return true;
@@ -68,7 +61,7 @@ export function solveSudoku(board) {
             return true;
           }
 
-          board[x][y] = "-";
+          board[x][y] = '-';
         }
       }
 
@@ -79,17 +72,8 @@ export function solveSudoku(board) {
     return board;
   }
   function loadToDOM() {
-    const rows = document.querySelectorAll(".row");
     const sudokuString = innerFunc().flat();
-    for (let i = 0; i < 9; i++) {
-      const rowChildren = rows[i].querySelectorAll(".item");
-      for (let j = 0; j < 9; j++) {
-        const index = i * 9 + j; // вычисляем индекс в sudokuString
-        if (index < sudokuString.length) {
-          rowChildren[j].innerText = sudokuString[index];
-        }
-      }
-    }
+    document.querySelectorAll('.item').forEach((el, idx) => (el.innerText = sudokuString[idx]));
   }
   loadToDOM();
   return board;
